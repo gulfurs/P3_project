@@ -29,9 +29,3 @@ List any prerequisites or system requirements necessary to run the game. Include
 ### Installation
 
 Provide step-by-step instructions for installing and running the game locally. Include code snippets or commands to make it easy for users to get started.
-
-```bash
-git clone https://github.com/yourusername/awesome-puzzle-game.git
-cd awesome-puzzle-game
-npm install
-npm start
