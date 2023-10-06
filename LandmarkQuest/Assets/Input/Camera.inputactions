@@ -1,0 +1,56 @@
+{
+    "name": "Camera",
+    "maps": [
+        {
+            "name": "rotation",
+            "id": "b78f6bae-05f2-4ee2-87b7-6ff2ea4f7062",
+            "actions": [
+                {
+                    "name": "rotateY",
+                    "type": "Value",
+                    "id": "b24335fd-ad75-40ea-9e47-6ae1543d521e",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "a39c001f-e0c9-4fa8-bb70-a8cc0800dffa",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rotateY",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "7cc4dfff-b44d-4913-8e04-ff64fafe67a8",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rotateY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "4cf4fb45-f514-4ab7-a689-ca7159db082c",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rotateY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
