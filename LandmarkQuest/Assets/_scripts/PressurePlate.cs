@@ -13,6 +13,7 @@ public class PressurePlate : MonoBehaviour
         if (col.tag == "presser") 
         {
             MeshRenderer renderer = GetComponent<MeshRenderer>();
+            
             if (!isPressed)
             {
                 isPressed = true;
