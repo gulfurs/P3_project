@@ -11,7 +11,7 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] int distanceX;
     [SerializeField] int distanceY;
     [SerializeField] int distanceZ;
-    [SerializeField] float speedOfMove = 5f;
+    //[SerializeField] float speedOfMove = 5f;
     Vector3 moveDistance;
 
     private void OnTriggerEnter(Collider col)
