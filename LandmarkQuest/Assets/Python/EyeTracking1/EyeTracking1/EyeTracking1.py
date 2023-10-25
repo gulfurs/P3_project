@@ -1,3 +1,35 @@
+import importlib.util
+
+required_packages = [
+    ("cv2", "opencv-python"),
+    ("gaze_tracking", "gaze-tracking"),
+    ("socket", "socket"),
+    ("pickle", "pickle"),
+    ("struct", "struct"),
+    ("zlib", "zlib"),
+    ("threading", "threading"),
+]
+
+for package_name, package_install_name in required_packages:
+    spec = importlib.util.find_spec(package_name)
+    if spec is None:
+        print("{package_name} is not installed. Installing {package_install_name} now...")
+        try:
+            import pip
+        except ImportError:
+            print("pip is not installed. Please install pip manually.")
+            exit(1)
+
+        import subprocess
+        subprocess.check_call(["pip", "install", package_install_name])
+
+        spec = importlib.util.find_spec(package_name)
+        if spec is None:
+            print("{package_name} installation failed. Please install {package_name} manually.")
+            exit(1)
+
+print("All required packages are installed and can be used.")
+
 import cv2
 from gaze_tracking import GazeTracking
 import socket
