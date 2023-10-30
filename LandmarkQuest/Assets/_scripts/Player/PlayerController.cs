@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
 				//Checks if it's interactable
 				if (interactable != null)
 				{
+					Debug.Log("<color=lime>" + "Interacting with " + interactable.name + "</color>");
 					SetFocus(interactable);
 				}
 			}
