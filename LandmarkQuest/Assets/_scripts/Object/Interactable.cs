@@ -12,7 +12,7 @@ public class Interactable : MonoBehaviour
 
     bool hasInteracted = false;
 
-    public void Interact()
+    public virtual void Interact()
     {
         //This method will be overwritten (virtual void)
     }
@@ -23,9 +23,11 @@ public class Interactable : MonoBehaviour
         if (isFocus && !hasInteracted)
         {
             float distance = Vector3.Distance(player.position, interactionTransform.position);
+            Debug.Log(distance + " " + radius);
             if (distance <= radius)
             {
                 Interact();
+                Debug.Log("Chime in");
                 hasInteracted = true;
             }
         }

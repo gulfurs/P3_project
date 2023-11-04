@@ -92,7 +92,7 @@ def handle_client(client_socket):
             cv2.putText(frame, "Left pupil:  " + str(left_pupil), (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
             cv2.putText(frame, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
 
-            #cv2.imshow("Demo", frame)
+            cv2.imshow("Demo", frame)
 
             if cv2.waitKey(1) == 27:
                 break
@@ -112,7 +112,7 @@ while True:
     client_handler.start()
 
 # Release the webcam resources
-#webcam.release()
+webcam.release()
 
 # Clean up and close the server socket
 server_socket.close()
