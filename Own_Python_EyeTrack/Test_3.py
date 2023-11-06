@@ -61,9 +61,9 @@ def cut_eyebrows(img):
 def blob_process(img, threshold, detector):
     gray_frame = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     _, img = cv2.threshold(gray_frame, threshold, 255, cv2.THRESH_BINARY)
-    img = cv2.erode(img, None, iterations=2)
-    img = cv2.dilate(img, None, iterations=4)
-    img = cv2.medianBlur(img, 5)
+    #img = cv2.erode(img, None, iterations=2)
+    #img = cv2.dilate(img, None, iterations=4)
+    #img = cv2.medianBlur(img, 5)
     keypoints = detector.detect(img)
     print(keypoints)
     return keypoints

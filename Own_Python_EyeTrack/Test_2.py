@@ -32,7 +32,10 @@ while True:
         #Draw a rectangle around the face
         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
-        face_roi = gray[y:y + h, x:x + w] #region of interest for the eyes in the face
+        top_third = y + h // 3
+
+        face_roi = gray[y + h // 24:y + h // 2, x:x + w]
+        #gray[y:y + top_third, x:x + w] #region of interest for the eyes in the face
         eyes = eye_cascade.detectMultiScale(face_roi) #Should be the eye detection
 
         left_eye, right_eye = None, None #If you don't have any eyes
@@ -45,7 +48,7 @@ while True:
             eye = frame[y + ey:y + ey + eh, x + ex:x + ex + ew]
             threshold = cv2.getTrackbarPos('Threshold', 'image')
 
-            if ey > h / 2:  # Exclude eyes near the top (eyebrows)
+            if ey < h / 2:  # Exclude eyes near the top (eyebrows)
                 eyecenter = x + ex + ew / 2  # Get the eye center
                 if eyecenter < w * 0.5:
                     left_eye = frame[y + ey:y + ey + eh, x + ex:x + ex + ew]
