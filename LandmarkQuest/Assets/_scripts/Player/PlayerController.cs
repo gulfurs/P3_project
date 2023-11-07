@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
-			if (Physics.Raycast(ray, out hit, 100, movementmask))
+			if (Physics.Raycast(ray, out hit, 1000, movementmask))
 			{
 				//Debug.Log("We hit " + hit.collider.name + " " + hit.point);
 				motor.MoveToPoint(hit.point);
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 			RaycastHit hit;
 
 			//Ray hits something?
-			if (Physics.Raycast(ray, out hit, 100))
+			if (Physics.Raycast(ray, out hit, 1000))
 			{
 				//Check if ray hits interactable
 				Interactable interactable = hit.collider.GetComponent<Interactable>();

@@ -10,8 +10,9 @@ public class ObjectMovementCircular : MonoBehaviour
     public bool verticalPattern = false; // Move vertically or horizontally
     public bool loopPattern = true;
     public Transform rotationCenter; // Assign a public transform to set the center of rotation
+    public bool pickInitialPosition = false;
+    public float angle = 0.0f;
 
-    private float angle = 0.0f;
     private float currentXAngle = 0.0f;
     private float currentYAngle = 0.0f;
     private Vector3 initialPosition;
@@ -20,12 +21,9 @@ public class ObjectMovementCircular : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
-        if (clockwise)
+        if (!pickInitialPosition)
         {
-            angle = 360f;
-        } else
-        {
-            angle = 0.0f;
+            angle = clockwise ? 360f : 0.0f;
         }
     }
 
