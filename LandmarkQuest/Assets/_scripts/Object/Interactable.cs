@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -12,24 +14,26 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-
         //This method will be overwritten (virtual void)
-        //Debug.Log("<color=lime>" + "Interacting with " + transform.name + "</color>");
     }
 
     void Update()
     {
+        //Make player close in and run Interact()
         if (isFocus && !hasInteracted)
         {
             float distance = Vector3.Distance(player.position, interactionTransform.position);
+            Debug.Log(distance + " " + radius);
             if (distance <= radius)
             {
                 Interact();
+                Debug.Log("Chime in");
                 hasInteracted = true;
             }
         }
     }
 
+    //If interacting with
     public void OnFocused(Transform playerTransform)
     {
         isFocus = true;
@@ -37,6 +41,7 @@ public class Interactable : MonoBehaviour
         hasInteracted = false;
     }
 
+    //If not interacted with
     public void OnDefocused()
     {
         isFocus = false;
@@ -44,6 +49,7 @@ public class Interactable : MonoBehaviour
         hasInteracted = false;
     }
 
+    //Visualize interaction radius Gizmo (Only visible in inspector)
     void OnDrawGizmosSelected()
     {
         if (interactionTransform == null)
