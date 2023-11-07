@@ -66,6 +66,17 @@ while True:
                 r = int(kp.size / 2)
                 cv2.circle(frame, (x_pupil, y_pupil), r, (0, 0, 255), 2)
 
+                left_third = x + ex + ew // 3
+                right_third = x + ex + (ew * 2) // 3
+
+                if x_pupil < left_third:
+                    print("left")
+                elif x_pupil > right_third:
+                    print("right")
+                else:
+                    print("Looking straight ahead")
+
+
     cv2.imshow("Eye Tracking", frame)
 
     if cv2.waitKey(1) & 0xFF == 27:  # Press 'Esc' to exit
