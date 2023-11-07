@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import pyautogui
 
 #Loading the xml files from the opencv GitHub https://github.com/opencv/opencv/tree/master/data/haarcascades
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
@@ -32,7 +33,7 @@ while True:
         #Draw a rectangle around the face
         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
-        top_third = y + h // 3
+        #top_third = y + h // 3
 
         face_roi = gray[y + h // 24:y + h // 2, x:x + w]
         #gray[y:y + top_third, x:x + w] #region of interest for the eyes in the face
@@ -48,12 +49,14 @@ while True:
             eye = frame[y + ey:y + ey + eh, x + ex:x + ex + ew]
             threshold = cv2.getTrackbarPos('Threshold', 'image')
 
+            """
             if ey < h / 2:  # Exclude eyes near the top (eyebrows)
                 eyecenter = x + ex + ew / 2  # Get the eye center
                 if eyecenter < w * 0.5:
                     left_eye = frame[y + ey:y + ey + eh, x + ex:x + ex + ew]
                 else:
                     right_eye = frame[y + ey:y + ey + eh, x + ex:x + ex + ew]
+            """
 
             #The thresholding (adjust parameters as needed)
             _, thresholded_eye = cv2.threshold(eye, threshold, 255, cv2.THRESH_BINARY)
@@ -70,12 +73,20 @@ while True:
                 right_third = x + ex + (ew * 2) // 3
 
                 if x_pupil < left_third:
+                    gaze_direction = "Looking left"
                     print("left")
                 elif x_pupil > right_third:
+                    gaze_direction = "Looking right"
                     print("right")
                 else:
-                    print("Looking straight ahead")
+                    gaze_direction = "Looking straight"
+                    print("Looking straight")
 
+                screen_width, screen_height = pyautogui.size()
+                target_x = int(screen_width * (x_pupil / frame.shape[1]))
+                target_y = int(screen_height * (y_pupil / frame.shape[0]))
+                pyautogui.moveTo(target_x, target_y)
+                cv2.circle(frame, (x_pupil, y_pupil), r, (0, 0, 255), 2)
 
     cv2.imshow("Eye Tracking", frame)
 
