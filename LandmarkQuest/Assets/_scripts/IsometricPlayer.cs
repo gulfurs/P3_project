@@ -24,7 +24,7 @@ public class IsometricPlayer : MonoBehaviour
         inputVector = Vector2.ClampMagnitude(inputVector, 1);
         Vector2 movement = inputVector * movementSpeed;
         Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
-        isoRenderer.SetDirection(movement);
+        //isoRenderer.SetDirection(movement);
         rb.MovePosition(newPos);
     }
 }
