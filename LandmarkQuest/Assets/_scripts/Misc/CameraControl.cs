@@ -16,7 +16,7 @@ public class CameraControl : MonoBehaviour
     public float yawSpeed = 100f;
 
     private float currentZoom = 10f;
-    private float currentYaw = 0f;
+    public float currentYaw = 0f;
 
     void Update()
     {
