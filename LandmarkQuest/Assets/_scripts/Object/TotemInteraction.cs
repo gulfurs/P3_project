@@ -10,26 +10,27 @@ public class TotemInteraction : Interactable
 
     private Transform totemTop;
     private Camera totemView;
+    private float rotationSpeed = 50.0f;
+    private float speedofRotation;
+    public SocketManagement socketManager;
 
     void Start()
     {
         mainCamera = Camera.main;
         playerController = FindObjectOfType<PlayerController>();
         cameraControl = FindObjectOfType<CameraControl>();
+        speedofRotation = rotationSpeed;
     }
 
     public override void Interact()
     {
         base.Interact();
 
-        // Find the "TotemTop" child object of the "WaterTotem" and get the camera under it.
         totemTop = transform.Find("TotemTop");
         totemView = totemTop.GetComponentInChildren<Camera>();
 
-        // Check if the camera was found.
         if (totemView != null)
         {
-            // Disable the current main camera.
             if (mainCamera != null)
             {
                 mainCamera.enabled = false;
@@ -38,7 +39,6 @@ public class TotemInteraction : Interactable
             cameraControl.enabled = false;
             playerController.enabled = false;
 
-            // Enable the totem camera as the new main camera.
             totemView.enabled = true;
         }
         else
@@ -49,29 +49,57 @@ public class TotemInteraction : Interactable
 
     void FixedUpdate()
     {
-        if (totemView != null && totemView.enabled)
+        if (socketManager != null)
         {
-            // Input to rotate the totemTop left and right along the Z-axis.
-            float rotationSpeed = 50.0f; // Adjust the rotation speed as needed.
-            float zRotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
-
-            // Rotate the TotemTop around its forward (Z) axis.
-            totemTop.Rotate(Vector3.forward, zRotation);
-
-            // Check for mouse click (left or right button) to return to the main camera.
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+            if (totemView != null && totemView.enabled)
             {
-                ReturnToMainCamera();
+                // Get the current message
+                int currentMessage = socketManager.GetCurrentMessage();
+                Debug.Log(currentMessage);
+
+                if (currentMessage == 1)
+                {
+                    rotationSpeed = -1;
+                }
+                else if (currentMessage == 2)
+                {
+                    rotationSpeed = 1;
+                }
+                else if (currentMessage == 0)
+                {
+                    rotationSpeed = 0;
+                }
+
+                totemTop.Rotate(Vector3.forward, rotationSpeed);
+
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+                {
+                    ReturnToMainCamera();
+                }
+            }
+        }
+        else
+        {
+
+            if (totemView != null && totemView.enabled)
+            {
+
+                float zRotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+
+                totemTop.Rotate(Vector3.forward, zRotation);
+
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+                {
+                    ReturnToMainCamera();
+                }
             }
         }
     }
 
     void ReturnToMainCamera()
     {
-        // Disable the totem camera.
         totemView.enabled = false;
 
-        // Enable the main camera.
         if (mainCamera != null)
         {
             mainCamera.enabled = true;
