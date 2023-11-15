@@ -254,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571045374744970096, guid: 4cfad96fdaed94d4e94caf5f59b690f9, type: 3}
       propertyPath: distanceY
-      value: 200
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4571045374744970096, guid: 4cfad96fdaed94d4e94caf5f59b690f9, type: 3}
       propertyPath: speedOfMove
@@ -614,7 +614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536427386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: -200, z: 0.5}
+  m_LocalPosition: {x: 7, y: -20, z: 0.5}
   m_LocalScale: {x: 5, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
