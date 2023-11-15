@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10f; //Player Detection range
+    public bool conditionalAgent = false;
+    public Sprite conditionalSprite;
 
     Transform target; //Reference to player
     NavMeshAgent agent; //Reference to AI
+
  
 // Start is called before the first frame update
 void Start()
@@ -26,7 +29,16 @@ void Start()
         //Move towards the target
         if (distance <= lookRadius)
         {
-            agent.SetDestination(target.position);
+            if (!conditionalAgent)
+            {
+                agent.SetDestination(target.position);
+            }
+            else {
+                if (target.Find("Inventory").GetComponent<SpriteRenderer>().sprite == conditionalSprite)
+                {
+                    agent.SetDestination(target.position);
+                }
+            }
 
             //If within attacking range
             if (distance <= agent.stoppingDistance)
