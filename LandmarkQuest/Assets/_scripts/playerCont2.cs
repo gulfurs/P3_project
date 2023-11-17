@@ -27,9 +27,9 @@ public class playerCont2 : MonoBehaviour
         right.Normalize();
 
         //this is the direction in the world space we want to move:
-        var desiredMoveDirection = forward * verticalAxis + right * horizontalAxis;
+        //var desiredMoveDirection = forward * verticalAxis + right * horizontalAxis;
 
         //now we can apply the movement:
-        transform.Translate(desiredMoveDirection * speedMeUp * Time.deltaTime);
+        //transform.Translate(desiredMoveDirection * speedMeUp * Time.deltaTime);
     }
 }
