@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCont : MonoBehaviour
 {
     public CharacterController controller;
+    public Rigidbody prb;
     public float moveSpeed = 5f;
     [SerializeField] private float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -41,7 +42,9 @@ public class PlayerCont : MonoBehaviour
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                controller.Move(direction * moveSpeed * Time.deltaTime);
+                //controller.Move(direction * moveSpeed * Time.deltaTime);
+                prb.velocity = (direction * moveSpeed);// * Time.deltaTime);
+
             }
         }
 
