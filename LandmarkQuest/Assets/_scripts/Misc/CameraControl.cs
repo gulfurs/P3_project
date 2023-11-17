@@ -17,13 +17,13 @@ public class CameraControl : MonoBehaviour
     public float currentYaw = 0f;
 
     public float yawSpeed = 100f;
-    private float speedofYaw;
     private SocketManagement socketManager;
+
+    private bool isRotating = false;
 
     void Start()
     {
         socketManager = GetComponent<SocketManagement>();
-        speedofYaw = yawSpeed;
     }
 
     void Update()
@@ -36,22 +36,18 @@ public class CameraControl : MonoBehaviour
         if (socketManager != null)
         {
             int currentMessage = socketManager.GetCurrentMessage();
-            currentYaw += yawSpeed;
 
-            // Adjust yaw based on the received message
-            if (currentMessage == 1)
+            if (!isRotating)
             {
-                yawSpeed = speedofYaw;
-                yawSpeed = Mathf.Abs(yawSpeed/100);
-            }
-            else if (currentMessage == 2)
-            {
-                yawSpeed = speedofYaw;
-                yawSpeed = -Mathf.Abs(yawSpeed/100);
-            }
-            else if (currentMessage == 0)
-            {
-                yawSpeed = 0;
+
+                if (currentMessage == 1)
+                {
+                    StartCoroutine(RotateCamera(yawSpeed));
+                }
+                else if (currentMessage == 2)
+                {
+                    StartCoroutine(RotateCamera(-yawSpeed));
+                }
             }
         }
         else
@@ -68,5 +64,23 @@ public class CameraControl : MonoBehaviour
         transform.LookAt(target.position + Vector3.up * pitch);
         // Rotates around camera
         transform.RotateAround(target.position, Vector3.up, currentYaw);
+    }
+
+    IEnumerator RotateCamera(float rotationAmount)
+    {
+        isRotating = true;  // Checks if the coroutine is in motion
+
+        float targetYaw = currentYaw + rotationAmount; //Current Yaw added with the yaw speed.
+        float elapsedTime = 0f; 
+
+        while (elapsedTime < 1f)  // Duration before the coroutine may start again
+        {
+            currentYaw = Mathf.Lerp(currentYaw, targetYaw, elapsedTime); //Moves yaw from currentyaw to the current yaw added with yawSpeed
+            elapsedTime += Time.deltaTime;  //Time progress
+            yield return null;  //Yields control to the rest of the update method, (for frame friendlyness)
+        }
+
+        currentYaw = targetYaw;  // Ensure we reach the exact target yaw
+        isRotating = false;  // Coroutine is no more in motion
     }
 }

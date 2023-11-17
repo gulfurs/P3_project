@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 234831532}
   - component: {fileID: 234831537}
   - component: {fileID: 234831535}
-  - component: {fileID: 234831536}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -230,18 +229,6 @@ MonoBehaviour:
   pitch: 2
   currentYaw: 0
   yawSpeed: 100
---- !u!114 &234831536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234831531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde3ebb835956d54693fdf9816102342, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &234831537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b1c531af9b1384f85d3206f48694af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMessage: 0
 --- !u!1 &365163412 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 374804f4075ed1f41a1437f4382e0b62, type: 3}
@@ -883,9 +871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a065e273f9c6cb7478c7460c21ef0f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inPort: 6969
-  outIP: 127.0.0.1
-  outPort: 6161
 --- !u!1001 &1022299593
 PrefabInstance:
   m_ObjectHideFlags: 0
