@@ -1,5 +1,6 @@
-import cv2
 import mediapipe as mp
+import cv2
+
 import pyautogui
 
 #initialize camera
@@ -26,7 +27,7 @@ while True:
         landmarks = landmark_points[0].landmark
 
                 
-        for id, landmark in enumerate(landmarks[474:478]):
+        for id, landmark in enumerate(landmacrks[474:478]):
             x = int(landmark.x * frame_w)
             y = int(landmark.y * frame_h)
             cv2.circle(frame, (x, y), 3, (0, 255, 0))

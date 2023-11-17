@@ -59,7 +59,7 @@ public class CameraControl : MonoBehaviour
     void LateUpdate()
     {
         // Camera follows target
-        //transform.position = target.position - offset * currentZoom;
+        transform.position = target.position - offset * currentZoom;
         // Camera looks at target
         transform.LookAt(target.position);// + Vector3.up * pitch);
         // Rotates around camera
