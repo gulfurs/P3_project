@@ -295,7 +295,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1301072026, guid: 0e71edb1263f9654c9bc58c088a9dbb4, type: 3}
       propertyPath: IsUsingSocket
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2501559262217564865, guid: 0e71edb1263f9654c9bc58c088a9dbb4, type: 3}
       propertyPath: m_Name
@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2501559262217564868, guid: 0e71edb1263f9654c9bc58c088a9dbb4, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2501559262217564868, guid: 0e71edb1263f9654c9bc58c088a9dbb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -363,7 +363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &842903703
 Transform:
   m_ObjectHideFlags: 0
@@ -972,7 +972,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7345367044555497025, guid: 47cdc9a0c8830154390a5a63e8d25c4b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7345367044555497025, guid: 47cdc9a0c8830154390a5a63e8d25c4b, type: 3}
       propertyPath: m_LocalPosition.x
