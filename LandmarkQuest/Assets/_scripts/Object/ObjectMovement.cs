@@ -8,6 +8,7 @@ public class ObjectMovement : MonoBehaviour
     public float speed = 5.0f; // Movement speed
     public float waitTimeBetweenPoints = 5.0f; // Time the object waits at a point
     public bool loopPattern = true;
+    public bool faceWaypoint = true;
 
     private int currentWaypointIndex = 0;
     private float waitTime;
@@ -60,6 +61,12 @@ public class ObjectMovement : MonoBehaviour
                 {
                     // Move the object towards the current waypoint using the specified speed
                     transform.position = Vector3.MoveTowards(transform.position, targetWaypoint.position, speed * Time.deltaTime);
+
+                    // Face the next waypoint
+                    if (faceWaypoint)
+                    {
+                        FaceWaypoint();
+                    }
                 }
             }
             else
@@ -68,5 +75,18 @@ public class ObjectMovement : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
         }
+    }
+
+    // Method to make the object face the next waypoint
+    void FaceWaypoint()
+    {
+        // Find direction towards the next waypoint
+        Vector3 direction = (waypoints[currentWaypointIndex].position - transform.position).normalized;
+
+        // Face the direction while not changing y-rotation
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+
+        // Smooth out rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 }

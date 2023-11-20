@@ -17,4 +17,19 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject player;
+    public bool IsUsingSocket = true;
+
+    void Start() {
+        // Find all objects of type SocketManagement
+        SocketManagement[] socketManagers = FindObjectsOfType<SocketManagement>();
+
+        // Loop through each SocketManagement object
+        foreach (SocketManagement socketManager in socketManagers)
+        {
+            if (!IsUsingSocket)
+            {
+                Destroy(socketManager);
+            }
+        }
+    }
 }

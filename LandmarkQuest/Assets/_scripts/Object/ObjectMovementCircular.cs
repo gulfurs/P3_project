@@ -12,11 +12,12 @@ public class ObjectMovementCircular : MonoBehaviour
     public Transform rotationCenter; // Assign a public transform to set the center of rotation
     public bool pickInitialPosition = false;
     public float angle = 0.0f;
+    public bool faceAngle = true;
 
     private float currentXAngle = 0.0f;
     private float currentYAngle = 0.0f;
     private Vector3 initialPosition;
-    private bool rotationComplete = false;
+    private bool rotationComplete = false;  
 
     private void Start()
     {
@@ -36,6 +37,11 @@ public class ObjectMovementCircular : MonoBehaviour
         else
         {
             RotateAroundCenter();
+        }
+
+        if (faceAngle)
+        {
+            FaceAngles();
         }
     }
 
@@ -123,5 +129,18 @@ public class ObjectMovementCircular : MonoBehaviour
             }
         }
     }
+
+    private void FaceAngles()
+    {
+        // Find direction towards the next angle
+        Vector3 direction = (rotationCenter.position - transform.position).normalized;
+
+        // Calculate the rotation to face the next angle (We make sure that it faces angles instead of the center by using Euler)
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z)) * Quaternion.Euler(0f, 90f, 0f);
+
+        // Smooth out rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
 
 }

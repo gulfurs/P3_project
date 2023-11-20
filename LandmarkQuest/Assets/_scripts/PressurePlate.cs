@@ -16,7 +16,7 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "presser") 
+        if (col.tag == "presser" || col.tag == "Player") 
         {
             MeshRenderer renderer = GetComponent<MeshRenderer>();
             
