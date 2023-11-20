@@ -6,23 +6,42 @@ using UnityEngine.InputSystem;
 
 public class playerConB : MonoBehaviour
 {
+    // public float limit = 100f;
+
     [SerializeField] private float moveSpeed = 5f;
-
-    public float limit = 100f;
-
+    [SerializeField] private Vector3 respawn = new Vector3 (0f, 5f, 0f);
 
     void Update()
     {
         float horizontalInput = Input.GetAxis("Vertical");
         float verticalInput = Input.GetAxis("Horizontal");
+        /*
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+        //Vector3 moveDirection = (cameraForward.normalized * verticalInput + cameraRight.normalized * horizontalInput).normalized;
+        //Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
+        */
 
         Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, -verticalInput).normalized;
         Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
-
-        newPosition.x = Mathf.Clamp(newPosition.x, -limit, limit);
-        newPosition.z = Mathf.Clamp(newPosition.z, -limit, limit);
+        
+        if(newPosition.y < -1f)
+        {
+            newPosition = respawn;
+        }
 
         transform.position = newPosition;
+
+        if (moveDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, Time.deltaTime * 1000f);
+        }
+
+        //newPosition.x = Mathf.Clamp(newPosition.x, -limit, limit);
+        //newPosition.z = Mathf.Clamp(newPosition.z, -limit, limit);
     }
 }
 
