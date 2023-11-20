@@ -1,8 +1,6 @@
-import mediapipe as mp
 import cv2
-
+import mediapipe as mp
 import pyautogui
-
 import socket
 import struct
 
@@ -14,6 +12,9 @@ server_socket.bind((host, port))
 server_socket.listen(5)
 
 print("Listening for Unity client on " + host + ":" + str(port))
+
+# Accept the connection outside the loop
+client_socket, addr = server_socket.accept()
 
 #initialize camera
 cam = cv2.VideoCapture(0) #use 0 for the default camera
@@ -46,6 +47,8 @@ while True:
         if (right[0].y - right[1].y) < 0.008:
             client_socket.send(struct.pack("<I", 1))
             print("test right")
+        else:
+            client_socket.send(struct.pack("<I", 0))
 
         left = [landmarks[145], landmarks[159]]
         for landmark in left:
@@ -55,6 +58,8 @@ while True:
         if (left[0].y - left[1].y) < 0.008:
             client_socket.send(struct.pack("<I", 2)) 
             print("test left")
+        else:
+            client_socket.send(struct.pack("<I", 0)) 
 
     cv2.imshow('Eye Controlled Mouse', frame)
 

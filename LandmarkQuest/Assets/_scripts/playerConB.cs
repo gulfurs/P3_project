@@ -8,15 +8,15 @@ public class playerConB : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
 
-    public float limit = 5f;
+    public float limit = 100f;
 
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Vertical");
+        float verticalInput = Input.GetAxis("Horizontal");
 
-        Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
+        Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, -verticalInput).normalized;
         Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
 
         newPosition.x = Mathf.Clamp(newPosition.x, -limit, limit);

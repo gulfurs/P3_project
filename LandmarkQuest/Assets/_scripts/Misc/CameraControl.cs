@@ -17,13 +17,19 @@ public class CameraControl : MonoBehaviour
     public float currentYaw = 0f;
 
     public float yawSpeed = 100f;
+    
     private SocketManagement socketManager;
+
+    //public GameObject socket;
 
     private bool isRotating = false;
 
     void Start()
     {
-        socketManager = GetComponent<SocketManagement>();
+        //socketManager = GetComponent<SocketManagement>();
+        //SocketManagement[] socketManagers = Objectfind.GetComponent<SocketManagement>();
+
+       socketManager = GameObject.Find("Socket").GetComponent<SocketManagement>();
     }
 
     void Update()
