@@ -29,7 +29,12 @@ public class CameraControl : MonoBehaviour
         //socketManager = GetComponent<SocketManagement>();
         //SocketManagement[] socketManagers = Objectfind.GetComponent<SocketManagement>();
 
-       socketManager = GameObject.Find("Socket").GetComponent<SocketManagement>();
+        GameObject socketObject = GameObject.Find("Socket");
+
+        if (socketObject != null)
+        {
+            socketManager = socketObject.GetComponent<SocketManagement>();
+        }
     }
 
     void Update()

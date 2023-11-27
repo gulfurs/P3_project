@@ -5,18 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Levels/LevelTutorial.unity
+    guid: da167d978fc6f5143bb9ed5b26f96e43
+  - enabled: 0
+    path: Assets/Scenes/Levels/MoodChange.unity
+    guid: ec55cdbbe66dc4b499f4812ab5257b49
+  - enabled: 0
+    path: Assets/Scenes/Levels/LevelTutorial2.unity
+    guid: 9192377540a8eb240a1e082692a1bb22
+  - enabled: 0
+    path: Assets/Scenes/Levels/Done.unity
+    guid: 33d04399acf03974dbc97557b724362f
   - enabled: 1
     path: Assets/Scenes/UI/Start scene.unity
     guid: c1b176c3bec0609448a76fc2a0264f28
   - enabled: 1
-    path: Assets/Scenes/Levels/LevelTutorial.unity
-    guid: da167d978fc6f5143bb9ed5b26f96e43
+    path: Assets/Scenes/LevelO.unity
+    guid: fb32e801b1395014595690d528f12d94
   - enabled: 1
-    path: Assets/Scenes/Levels/MoodChange.unity
-    guid: ec55cdbbe66dc4b499f4812ab5257b49
+    path: Assets/Scenes/LevelP.unity
+    guid: 1ee18925522ccce4d930f9e36ea90ed7
   - enabled: 1
-    path: Assets/Scenes/Levels/LevelTutorial2.unity
-    guid: 9192377540a8eb240a1e082692a1bb22
+    path: Assets/Scenes/LevelQ.unity
+    guid: 414bf7926a2025d418742f7e0b603bec
   - enabled: 1
     path: Assets/Scenes/UI/End scene.unity
     guid: 6a518a40a0a94a54589072e5bb4d5e37
