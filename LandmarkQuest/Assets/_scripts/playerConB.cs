@@ -13,9 +13,7 @@ public class playerConB : MonoBehaviour
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Vertical");
-        float verticalInput = Input.GetAxis("Horizontal");
-        /*
+   /*
         Vector3 cameraForward = Camera.main.transform.forward;
         Vector3 cameraRight = Camera.main.transform.right;
         cameraForward.y = 0f;
@@ -23,6 +21,9 @@ public class playerConB : MonoBehaviour
         //Vector3 moveDirection = (cameraForward.normalized * verticalInput + cameraRight.normalized * horizontalInput).normalized;
         //Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
         */
+
+        float horizontalInput = Input.GetAxis("Vertical");
+        float verticalInput = Input.GetAxis("Horizontal");
 
         Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, -verticalInput).normalized;
         Vector3 newPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
