@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1537445927573925967}
   - component: {fileID: 1537445927573925966}
   - component: {fileID: 1537445927573925982}
+  - component: {fileID: 162555992744067387}
   m_Layer: 5
   m_Name: RetryText
   m_TagString: Untagged
@@ -79,8 +80,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286611685
-  m_fontColor: {r: 0.8962264, g: 0.502225, b: 0.502225, a: 1}
+    rgba: 4282244095
+  m_fontColor: {r: 1, g: 0.85882354, b: 0.23921569, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -216,3 +217,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &162555992744067387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537445927573925969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525722e52fb7f1a49bcd8ffc87c3f092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
