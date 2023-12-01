@@ -4,6 +4,7 @@ import pyautogui
 import socket
 import struct
 
+
 # Initialize camera
 cam = cv2.VideoCapture(0)  # Use 0 for the default camera
 
@@ -70,3 +71,6 @@ while True:
 
 cam.release()
 cv2.destroyAllWindows()
+
+
+
