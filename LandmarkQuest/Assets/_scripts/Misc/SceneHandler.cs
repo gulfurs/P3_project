@@ -18,7 +18,7 @@ public class SceneHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        DontDestroyOnLoad(gameObject);
         // Get the current scene index
         currentScene = SceneManager.GetActiveScene().buildIndex;
     }

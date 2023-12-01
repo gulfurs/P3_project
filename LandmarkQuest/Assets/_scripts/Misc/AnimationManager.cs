@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour
 {
     public Animator animateTree;
+    public GameObject toggleObject;
 
     void AnimateChop() {
         if (animateTree != null)
@@ -16,5 +17,13 @@ public class AnimationManager : MonoBehaviour
     void ChopFinished() {
         PlayerManager.PlayerInstance.player.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    void ToggleObject()
+    {
+        if (toggleObject != null)
+        {
+            toggleObject.SetActive(!toggleObject.activeSelf);
+        }
     }
 }

@@ -11,11 +11,14 @@ public class PlayerController : MonoBehaviour
 	Camera cam;
 	PlayerMotor motor;
 
+	private ParticleSystem interactParticles;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		cam = Camera.main;
 		motor = GetComponent<PlayerMotor>();
+		interactParticles = GetComponentInChildren<ParticleSystem>();
 	}
 
 	// Update is called once per frame
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
 			if (Physics.Raycast(ray, out hit, 1000, movementmask))
 			{
+				PlayParticles(hit.point, null);
 				//Debug.Log("We hit " + hit.collider.name + " " + hit.point);
 				motor.MoveToPoint(hit.point);
 
@@ -51,12 +55,24 @@ public class PlayerController : MonoBehaviour
 			//Ray hits something?
 			if (Physics.Raycast(ray, out hit, 1000))
 			{
+				
 				//Check if ray hits interactable
 				Interactable interactable = hit.collider.GetComponent<Interactable>();
 				//Checks if it's interactable
 				if (interactable != null)
 				{
 					Debug.Log("<color=lime>" + "Interacting with " + interactable.name + "</color>");
+
+					// Check if the interactable has the ObjectiveInteraction component
+					if (interactable.GetComponent<ObjectiveInteraction>() != null)
+					{
+						PlayParticles(hit.point, "Objective");
+					}
+					else
+					{
+						PlayParticles(hit.point, "Interactable");
+					}
+
 					SetFocus(interactable);
 				}
 			}
@@ -87,4 +103,29 @@ public class PlayerController : MonoBehaviour
 		focus = null;
 		motor.StopFollowTarget();
 	}
+
+	void PlayParticles(Vector3 position, string interactType)
+	{
+		ParticleSystem particle = Instantiate(interactParticles, position, Quaternion.identity);
+
+		ParticleSystem.MainModule mainModule = particle.main;
+
+		switch (interactType)
+		{
+			case "Objective":
+				mainModule.startColor = Color.blue;
+				break;
+
+			case "Interactable":
+				mainModule.startColor = Color.yellow;
+				break;
+
+			default:
+				break;
+		}
+
+		Destroy(particle.gameObject, particle.main.duration);
+	}
+
+
 }
