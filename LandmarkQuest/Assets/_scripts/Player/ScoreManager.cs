@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public bool isMaxScore = false;
 
     public GameObject maxScoreEvent;
+    public GameObject timeManager;
 
     #region
     public static ScoreManager ScoreInstance;
@@ -42,6 +43,10 @@ public class ScoreManager : MonoBehaviour
             if (maxScoreEvent != null)
             {
                 maxScoreEvent.SetActive(true);
+            }
+            if (timeManager != null)
+            {
+                timeManager.SetActive(false);
             }
         }
     }

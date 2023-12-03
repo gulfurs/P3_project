@@ -9,14 +9,17 @@ public class EnemyController : MonoBehaviour
     public bool conditionalAgent = false;
     public Sprite conditionalSprite;
 
-    Transform target; //Reference to player
+    public Transform target; //Reference to player
     NavMeshAgent agent; //Reference to AI
 
  
 // Start is called before the first frame update
 void Start()
     {
-        target = PlayerManager.PlayerInstance.player.transform;
+        if (target == null)
+        {
+            target = PlayerManager.PlayerInstance.player.transform;
+        }
         agent = GetComponent<NavMeshAgent>();
     }
 

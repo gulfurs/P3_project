@@ -30,8 +30,17 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelP.unity
     guid: 1ee18925522ccce4d930f9e36ea90ed7
   - enabled: 1
+    path: Assets/Scenes/LevelR.unity
+    guid: fdb0f21a76e746e4aae7b7cfeeb473bd
+  - enabled: 1
     path: Assets/Scenes/LevelQ.unity
     guid: 414bf7926a2025d418742f7e0b603bec
+  - enabled: 1
+    path: Assets/LevelS.unity
+    guid: 04747a42667930943b3025b1d2661a16
+  - enabled: 1
+    path: Assets/Scenes/LevelT.unity
+    guid: b869aad16a1b3954296b315624ea3099
   - enabled: 1
     path: Assets/Scenes/UI/End scene.unity
     guid: 6a518a40a0a94a54589072e5bb4d5e37

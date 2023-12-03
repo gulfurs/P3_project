@@ -26,4 +26,11 @@ public class AnimationManager : MonoBehaviour
             toggleObject.SetActive(!toggleObject.activeSelf);
         }
     }
+
+    void Climbing()
+    {
+        PlayerManager.PlayerInstance.player.transform.position = transform.position;
+        PlayerManager.PlayerInstance.player.SetActive(true);
+        gameObject.SetActive(false);
+    }
 }

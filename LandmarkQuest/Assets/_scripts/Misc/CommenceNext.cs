@@ -16,7 +16,7 @@ public class CommenceNext : MonoBehaviour
 
     void Update()
     {
-        if (allowCommencing && transform.position.y > platform.position.y + triggerY)
+        if (allowCommencing && platform != null && transform.position.y > platform.position.y + triggerY)
         {
             SceneHandler.sceneInstance.LoadNextLevel();
         }
