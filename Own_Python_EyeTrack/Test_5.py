@@ -19,25 +19,19 @@ cv2.setWindowProperty('Test4', cv2.WND_PROP_VISIBLE, cv2.WINDOW_NORMAL)
 current_state = "Center"
 pre_state = "Center"
 
-#user_title = input("Enter a title for the CSV file: ")
-
-
-#title = user_title if user_title else f"eye_states_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-title = f"testperson_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-
+# Generate a unique title based on date and time
+csv_file_title = f"testperson_next_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 
 # Specify the CSV file path
-csv_file_path = title
+csv_file_path = csv_file_title
 
 # Open the CSV file for writing
 with open(csv_file_path, 'w', newline='') as csvfile:
-    fieldnames = ["Frame", "State"]
+    fieldnames = ["Timestamp", "State"]
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     # Write the header
     writer.writeheader()
-
-    frame_count = 0
 
     while True:
         _, frame = cam.read()
@@ -63,7 +57,7 @@ with open(csv_file_path, 'w', newline='') as csvfile:
             screen_y = screen_h * central_point.y
 
             threshold1 = int(screen_w / 4)
-            threshold2 = int(screen_w / 8)
+            threshold2 = int(screen_w / 9)
 
             cv2.line(frame, (threshold1, 0), (threshold1, screen_h), (255, 0, 0), 2)
             cv2.line(frame, (threshold2, 0), (threshold2, screen_h), (255, 0, 0), 2)
@@ -78,8 +72,8 @@ with open(csv_file_path, 'w', newline='') as csvfile:
             if current_state != pre_state:
                 print(current_state)
 
-                # Write the state and frame count to the CSV file
-                writer.writerow({"Frame": frame_count, "State": current_state})
+                # Write the timestamp and state to the CSV file
+                writer.writerow({"Timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "State": current_state})
 
             pre_state = current_state
 
@@ -87,8 +81,6 @@ with open(csv_file_path, 'w', newline='') as csvfile:
 
         if cv2.waitKey(1) & 0xFF == 27:  # Press 'Esc' to exit
             break
-
-        frame_count += 1
 
     # Close the CSV file
     csvfile.close()
