@@ -3,6 +3,19 @@ import mediapipe as mp
 import pyautogui
 import csv
 from datetime import datetime
+import socket
+import struct
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+host = 'localhost'
+port = 12345
+server_socket.bind((host, port))
+server_socket.listen(5)
+
+print("Listening for Unity client on " + host + ":" + str(port))
+
+# Accept the connection outside the loop
+client_socket, addr = server_socket.accept()
 
 # Initialize camera
 cam = cv2.VideoCapture(0)  # Use 0 for the default camera
@@ -20,7 +33,7 @@ current_state = "Center"
 pre_state = "Center"
 
 # Generate a unique title based on date and time
-csv_file_title = f"testperson_next_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+csv_file_title = f"testperson_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 
 # Specify the CSV file path
 csv_file_path = csv_file_title
