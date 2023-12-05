@@ -1,10 +1,11 @@
 import cv2
 import mediapipe as mp
 import pyautogui
+import csv
+from datetime import datetime
 import socket
 import struct
 
-# Create a socket server
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = 'localhost'
 port = 12345
@@ -12,6 +13,9 @@ server_socket.bind((host, port))
 server_socket.listen(5)
 
 print("Listening for Unity client on " + host + ":" + str(port))
+
+# Accept the connection outside the loop
+client_socket, addr = server_socket.accept()
 
 # Initialize camera
 cam = cv2.VideoCapture(0)  # Use 0 for the default camera
@@ -21,52 +25,78 @@ face_mesh = mp.solutions.face_mesh.FaceMesh(refine_landmarks=True)  # Gets the f
 
 screen_w, screen_h = pyautogui.size()
 
-# Accept the connection outside the loop
-client_socket, addr = server_socket.accept()
-
 # Create a window, but do not display it
 cv2.namedWindow('Test4', cv2.WINDOW_NORMAL)
 cv2.setWindowProperty('Test4', cv2.WND_PROP_VISIBLE, cv2.WINDOW_NORMAL)
 
-while True:
-    _, frame = cam.read()
-    frame = cv2.flip(frame, 1)
-    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+current_state = "Center"
+pre_state = "Center"
 
-    # Process the frame with Face Mesh model
-    output = face_mesh.process(rgb_frame)
+# Generate a unique title based on date and time
+csv_file_title = f"testperson_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 
-    # Extract face landmarks
-    landmark_points = output.multi_face_landmarks
-    frame_h, frame_w, _ = frame.shape
+# Specify the CSV file path
+csv_file_path = csv_file_title
 
-    if landmark_points:
-        landmarks = landmark_points[0].landmark
+# Open the CSV file for writing
+with open(csv_file_path, 'w', newline='') as csvfile:
+    fieldnames = ["Timestamp", "State"]
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-        for id, landmark in enumerate(landmarks[474:478]):
-            x = int(landmark.x * frame_w)
-            y = int(landmark.y * frame_h)
+    # Write the header
+    writer.writeheader()
+
+    while True:
+        _, frame = cam.read()
+        frame = cv2.flip(frame, 1)
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        # Process the frame with Face Mesh model
+        output = face_mesh.process(rgb_frame)
+
+        # Extract face landmarks
+        landmark_points = output.multi_face_landmarks
+        frame_h, frame_w, _ = frame.shape
+
+        if landmark_points:
+            landmarks = landmark_points[0].landmark
+
+            central_point = landmarks[10]
+            x = int(central_point.x * frame_w)
+            y = int(central_point.y * frame_h)
             cv2.circle(frame, (x, y), 3, (0, 255, 0))
 
-            if id == 1:
-                screen_x = screen_w * landmark.x
-                screen_y = screen_h * landmark.y
-                # pyautogui.moveTo(screen_x, screen_y)
+            screen_x = screen_w * central_point.x
+            screen_y = screen_h * central_point.y
 
-                if screen_x < screen_w / 3:
-                    print("Left")
-                    client_socket.send(struct.pack("<I", 1))  # Send "Left" message to Unity
-                elif screen_x > 2 * screen_w / 3:
-                    print("Right")
-                    client_socket.send(struct.pack("<I", 2))  # Send "Right" message to Unity
-                else:
-                    print("Center")
-                    client_socket.send(struct.pack("<I", 0))  # Send "Center" message to Unity
+            threshold1 = int(screen_w / 4)
+            threshold2 = int(screen_w / 9)
 
-    cv2.imshow('Test4', frame)
+            cv2.line(frame, (threshold1, 0), (threshold1, screen_h), (255, 0, 0), 2)
+            cv2.line(frame, (threshold2, 0), (threshold2, screen_h), (255, 0, 0), 2)
 
-    if cv2.waitKey(1) & 0xFF == 27:  # Press 'Esc' to exit
-        break
+            if screen_x < screen_w / 3:
+                current_state = "Left"
+            elif screen_x > 2 * screen_w / 3:
+                current_state = "Right"
+            else:
+                current_state = "Center"
+
+            if current_state != pre_state:
+                print(current_state)
+
+                # Write the timestamp and state to the CSV file
+                writer.writerow({"Timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "State": current_state})
+
+            pre_state = current_state
+
+        cv2.imshow('Test4', frame)
+
+        if cv2.waitKey(1) & 0xFF == 27:  # Press 'Esc' to exit
+            break
+
+    # Close the CSV file
+    csvfile.close()
 
 cam.release()
 cv2.destroyAllWindows()

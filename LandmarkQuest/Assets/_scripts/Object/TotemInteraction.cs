@@ -12,7 +12,7 @@ public class TotemInteraction : Interactable
     private Camera totemView;
     private float rotationSpeed = 50.0f;
     private float speedofRotation;
-    public SocketManagement socketManager;
+    private SocketManagement socketManager;
 
     void Start()
     {
@@ -20,6 +20,13 @@ public class TotemInteraction : Interactable
         playerController = FindObjectOfType<PlayerController>();
         cameraControl = FindObjectOfType<CameraControl>();
         speedofRotation = rotationSpeed;
+
+        GameObject socketObject = GameObject.Find("Socket");
+
+        if (socketObject != null)
+        {
+            socketManager = socketObject.GetComponent<SocketManagement>();
+        }
     }
 
     public override void Interact()

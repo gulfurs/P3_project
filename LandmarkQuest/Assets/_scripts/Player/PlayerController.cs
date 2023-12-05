@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
-			if (Physics.Raycast(ray, out hit, 1000, movementmask))
+			if (Physics.Raycast(ray, out hit, 10000, movementmask))
 			{
 				PlayParticles(hit.point, null);
 				//Debug.Log("We hit " + hit.collider.name + " " + hit.point);
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 			RaycastHit hit;
 
 			//Ray hits something?
-			if (Physics.Raycast(ray, out hit, 1000))
+			if (Physics.Raycast(ray, out hit, 10000))
 			{
 				
 				//Check if ray hits interactable

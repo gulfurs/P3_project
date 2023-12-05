@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControl : MonoBehaviour
+public class CameraControl : SocketMessage
 {
     public Transform target;
 
@@ -17,54 +17,37 @@ public class CameraControl : MonoBehaviour
     public float currentYaw = 0f;
 
     public float yawSpeed = 100f;
-    
-    private SocketManagement socketManager;
-
-    //public GameObject socket;
-
+   
     private bool isRotating = false;
 
-    void Start()
-    {
-        //socketManager = GetComponent<SocketManagement>();
-        //SocketManagement[] socketManagers = Objectfind.GetComponent<SocketManagement>();
-
-        GameObject socketObject = GameObject.Find("Socket");
-
-        if (socketObject != null)
-        {
-            socketManager = socketObject.GetComponent<SocketManagement>();
-        }
-    }
-
-    void Update()
+    public override void Update()
     {
         // Input zooms in camera
         currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         // Limits zoom
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
-        if (socketManager != null)
-        {
-            int currentMessage = socketManager.GetCurrentMessage();
+        base.Update();
+    }
 
-            if (!isRotating)
-            {
+    public override void TiltRight()
+    {
+        base.TiltRight();
+        if (!isRotating)
+        StartCoroutine(RotateCamera(yawSpeed));
+    }
 
-                if (currentMessage == 1)
-                {
-                    StartCoroutine(RotateCamera(yawSpeed));
-                }
-                else if (currentMessage == 2)
-                {
-                    StartCoroutine(RotateCamera(-yawSpeed));
-                }
-            }
-        }
-        else
-        {
-            currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
-        }
+    public override void TiltLeft()
+    {
+        base.TiltLeft();
+        if (!isRotating)
+        StartCoroutine(RotateCamera(-yawSpeed));
+    }
+
+    public override void NoSocket()
+    {
+        base.NoSocket();
+        currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
     }
 
     void LateUpdate()

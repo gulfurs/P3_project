@@ -20,11 +20,31 @@ public class HazardInteraction : Interactable
 
         if (circularMovement != null)
         {
-            circularMovement.enabled = false;
-           
-            yield return new WaitForSeconds(delay);
+            Renderer renderer = GetComponentInChildren<Renderer>();
 
-            circularMovement.enabled = true;
+            if (renderer != null)
+            {
+                Material material = renderer.material;
+
+                if (material != null)
+                {
+                    material.EnableKeyword("_EMISSION");
+
+                    circularMovement.enabled = false;
+
+                    yield return new WaitForSeconds(delay);
+
+                    material = renderer.material;
+
+                    if (material != null)
+                    {
+                        material.DisableKeyword("_EMISSION");
+                    }
+
+                    circularMovement.enabled = true;
+                }
+            }
         }
     }
+
 }

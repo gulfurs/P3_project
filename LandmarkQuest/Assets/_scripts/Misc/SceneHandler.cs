@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneHandler : MonoBehaviour
 {
     public static SceneHandler sceneInstance;
-    private int currentScene;
+    public int currentScene;
 
     void Awake()
     {
@@ -21,6 +21,12 @@ public class SceneHandler : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         // Get the current scene index
         currentScene = SceneManager.GetActiveScene().buildIndex;
+
+    }
+
+    void Start()
+    {
+      
     }
 
     void Update()

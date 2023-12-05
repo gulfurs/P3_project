@@ -11,8 +11,10 @@ public class Hazardous : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.Playing("Death");
             Animator playerAnimator = other.GetComponentInChildren<Animator>();
             PlayerController playerController = other.GetComponentInChildren<PlayerController>();
+            CapsuleCollider collider = other.GetComponentInChildren<CapsuleCollider>();
             PlayerMotor playerMotor = other.GetComponentInChildren<PlayerMotor>();
             Camera deathCamera = other.GetComponentInChildren<Camera>();
             NavMeshAgent navMeshAgent = other.GetComponentInChildren<NavMeshAgent>();
@@ -41,6 +43,11 @@ public class Hazardous : MonoBehaviour
             if (playerMotor != null)
             {
                 playerMotor.enabled = false;
+            }
+
+            if (collider != null)
+            {
+                collider.enabled = false;
             }
 
             if (retryButton != null)

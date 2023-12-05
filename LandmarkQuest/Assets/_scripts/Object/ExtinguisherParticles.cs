@@ -15,5 +15,11 @@ public class ExtinguisherParticles : MonoBehaviour
         {
             fire.TakeDamage(extinguisherDamage);
         }
+
+        Vulnerable obj = other.GetComponent<Vulnerable>();
+        if (obj != null)
+        {
+            obj.TakeDamage(extinguisherDamage);
+        }
     }
 }
