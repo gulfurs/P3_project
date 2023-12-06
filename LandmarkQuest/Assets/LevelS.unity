@@ -1804,6 +1804,10 @@ PrefabInstance:
       propertyPath: radius
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 221550985270395605, guid: 14e4fd68b6ca7cd4cb604d8d961a042d, type: 3}
+      propertyPath: interactSound
+      value: Bird
+      objectReference: {fileID: 0}
     - target: {fileID: 6661606192224257505, guid: 14e4fd68b6ca7cd4cb604d8d961a042d, type: 3}
       propertyPath: platform
       value: 
