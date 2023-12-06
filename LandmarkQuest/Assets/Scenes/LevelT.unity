@@ -370,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   interactionTransform: {fileID: 64843230}
+  interactSound: Interact1
   newItem: {fileID: 21300000, guid: 87f2889d00c50c24b8fd0cfda3f12666, type: 3}
   noDestroy: 0
   RandomItem: 0
@@ -1820,6 +1821,10 @@ PrefabInstance:
     - target: {fileID: 221550985270395605, guid: 14e4fd68b6ca7cd4cb604d8d961a042d, type: 3}
       propertyPath: radius
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 221550985270395605, guid: 14e4fd68b6ca7cd4cb604d8d961a042d, type: 3}
+      propertyPath: interactSound
+      value: Bird
       objectReference: {fileID: 0}
     - target: {fileID: 6661606192224257505, guid: 14e4fd68b6ca7cd4cb604d8d961a042d, type: 3}
       propertyPath: platform

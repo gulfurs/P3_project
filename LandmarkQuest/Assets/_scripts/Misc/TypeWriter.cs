@@ -36,6 +36,7 @@ public class TypeWriter : MonoBehaviour
 
         if (doneTypingEvent != null)
         {
+            AudioManager.instance.Playing("ButtonClick");
             doneTypingEvent.SetActive(true);
             textField.SetActive(false);
         }
