@@ -39,12 +39,14 @@ public class SceneHandler : MonoBehaviour
 
     public void RetryLevel()
     {
+        OptimizeSounds();
         // Reload the current scene
         SceneManager.LoadScene(currentScene);
     }
 
     public void LoadNextLevel()
     {
+        OptimizeSounds();
         //Go to next scene and makes sure to loop back to the beginning once we reach the end to prevent compile errors.
         int nextScene = (currentScene + 1) % SceneManager.sceneCountInBuildSettings;
 
@@ -53,5 +55,10 @@ public class SceneHandler : MonoBehaviour
 
         // Updates the current scene index
         currentScene = nextScene;
+    }
+
+    void OptimizeSounds() {
+        AudioManager.instance.Stop("Bee");
+        AudioManager.instance.Stop("Extinguish");
     }
 }

@@ -16,6 +16,7 @@ public class Vulnerable : MonoBehaviour
     private EnemyController controller;
     private Collider boxCollider;
     private SphereCollider sphCollider;
+    private AudioMaker audia;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Vulnerable : MonoBehaviour
         controller = GetComponent<EnemyController>();
         boxCollider = GetComponent<Collider>();
         sphCollider = GetComponent<SphereCollider>();
+        audia = GetComponent<AudioMaker>();
     }
 
     // Update is called once per frame
@@ -59,7 +61,9 @@ public class Vulnerable : MonoBehaviour
 
             if (sphCollider != null)
                 sphCollider.radius = 1.0f;
-            //Destroy(gameObject);
+
+            AudioManager.instance.Stop("Bee");
+
         }
     }
 

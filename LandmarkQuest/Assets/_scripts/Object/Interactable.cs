@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
     bool isFocus = false;
     Transform player;
     public Transform interactionTransform;
+    public string interactSound = "Interact1";
 
     bool hasInteracted = false;
 
@@ -26,7 +27,7 @@ public class Interactable : MonoBehaviour
             if (distance <= radius)
             {
                 Interact();
-                Debug.Log("Chime in");
+                AudioManager.instance.Playing(interactSound);
                 hasInteracted = true;
             }
         }

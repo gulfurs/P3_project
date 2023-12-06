@@ -545,6 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6.5
   interactionTransform: {fileID: 414616965}
+  interactSound: 
   ToggleObject: {fileID: 1857482869}
   green: {fileID: 2100000, guid: a51e5bccbe61a374896de9bcd3b9f965, type: 2}
   red: {fileID: 2100000, guid: ee025c6f2258c464baf28d79c66d4360, type: 2}
@@ -641,6 +642,7 @@ GameObject:
   - component: {fileID: 466764028}
   - component: {fileID: 466764030}
   - component: {fileID: 466764031}
+  - component: {fileID: 466764032}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -746,6 +748,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd571691daede845b5bfa46e861c8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &466764032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466764025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdce21c964ac8c4a8bf2786055fe5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - Roar1
+  - Roar3
+  - Roar4
+  - Roar5
+  - Roar6
 --- !u!1 &484464149
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4426480eb5c4d4bbffbce2cceebc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScene: 0
 --- !u!4 &484464151
 Transform:
   m_ObjectHideFlags: 0
@@ -903,6 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   interactionTransform: {fileID: 505153381}
+  interactSound: 
   newItem: {fileID: 21300000, guid: 135bcfb7fd1af6c4ea6e4368a1479ce4, type: 3}
   noDestroy: 0
   RandomItem: 0
@@ -1461,6 +1483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 6.5
   interactionTransform: {fileID: 1096363009}
+  interactSound: 
   ToggleObject: {fileID: 1857482869}
   green: {fileID: 2100000, guid: a51e5bccbe61a374896de9bcd3b9f965, type: 2}
   red: {fileID: 2100000, guid: ee025c6f2258c464baf28d79c66d4360, type: 2}

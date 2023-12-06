@@ -66,3 +66,94 @@ MonoBehaviour:
     loop: 0
     randomizePitch: 1
     source: {fileID: 0}
+  - name: AmbientNoise
+    clip: {fileID: 8300000, guid: 46122e8f72284a148881a17545b284ec, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    randomizePitch: 0
+    source: {fileID: 0}
+  - name: NightTime
+    clip: {fileID: 8300000, guid: 6585c476aec3c5844b59221d054fa79b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    randomizePitch: 0
+    source: {fileID: 0}
+  - name: Roar1
+    clip: {fileID: 8300000, guid: bef15a3e0e3f43744b3b2cdc49d269dd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: Roar2
+    clip: {fileID: 8300000, guid: b283a6b880997f14cb4dcd8512ff5f01, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: Roar3
+    clip: {fileID: 8300000, guid: 94ceb4129b0b4af4086e191080c99587, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: Roar4
+    clip: {fileID: 8300000, guid: 6fd344d7e134d9949b8288f526a6b3a4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: Roar5
+    clip: {fileID: 8300000, guid: 49d8bce4503a27d47ac585073e1a6079, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: Roar6
+    clip: {fileID: 8300000, guid: a1031820f8d27a540acf9dcd37281153, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: FootSteps
+    clip: {fileID: 8300000, guid: 5325f79cdcdb3f448945182d48be5c8e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 0
+    source: {fileID: 0}
+  - name: Interact1
+    clip: {fileID: 8300000, guid: 4c0df7ade3218bd4cb11727e9b701414, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: Interact2
+    clip: {fileID: 8300000, guid: dd1b23c0da7a5ad4bb4b75df0da8c110, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}
+  - name: Collect
+    clip: {fileID: 8300000, guid: 9b8672b2cdedc424388501f0644b94ca, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 0
+    source: {fileID: 0}
+  - name: Bee
+    clip: {fileID: 8300000, guid: 71c7a844d44b52e439a421c75b3184b6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    randomizePitch: 1
+    source: {fileID: 0}

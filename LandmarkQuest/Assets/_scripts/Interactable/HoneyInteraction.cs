@@ -17,6 +17,7 @@ public class HoneyInteraction : Itemize
             NavMeshAgent navMeshAgent = fazBear.GetComponent<NavMeshAgent>();
             ObjectMovement objectMovement = fazBear.GetComponent<ObjectMovement>();
             EnemyController enemyController = fazBear.GetComponent<EnemyController>();
+            AudioMaker soundMaker = fazBear.GetComponent<AudioMaker>();
             Animator anim = fazBear.GetComponent<Animator>();
 
             if (navMeshAgent != null)
@@ -32,6 +33,11 @@ public class HoneyInteraction : Itemize
             if (enemyController != null)
             {
                 enemyController.enabled = true;
+            }
+
+            if (soundMaker != null)
+            {
+                soundMaker.enabled = true;
             }
 
             if (anim != null)

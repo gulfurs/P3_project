@@ -10,7 +10,7 @@ public class ObjectiveInteraction : Interactable
     public bool isCondition = false;
 
     public float flySpeed = 10.0f;
-    private bool isFlying = false;
+    public bool isFlying = false;
 
     public Sprite itemCheck;
     public GameObject disclaimerText;

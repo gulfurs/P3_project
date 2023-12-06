@@ -33,7 +33,7 @@ current_state = "Center"
 pre_state = "Center"
 
 # Generate a unique title based on date and time
-csv_file_title = f"testperson_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+csv_file_title = "testperson_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 
 # Specify the CSV file path
 csv_file_path = csv_file_title
@@ -77,10 +77,13 @@ with open(csv_file_path, 'w', newline='') as csvfile:
 
             if screen_x < screen_w / 3:
                 current_state = "Left"
+                client_socket.send(struct.pack("<I", 2)) 
             elif screen_x > 2 * screen_w / 3:
                 current_state = "Right"
+                client_socket.send(struct.pack("<I", 1)) 
             else:
                 current_state = "Center"
+                client_socket.send(struct.pack("<I", 0)) 
 
             if current_state != pre_state:
                 print(current_state)
@@ -100,4 +103,3 @@ with open(csv_file_path, 'w', newline='') as csvfile:
 
 cam.release()
 cv2.destroyAllWindows()
-

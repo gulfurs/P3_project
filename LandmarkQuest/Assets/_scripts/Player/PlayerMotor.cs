@@ -11,6 +11,8 @@ public class PlayerMotor : MonoBehaviour
     //References component
     NavMeshAgent agent;
 
+    public bool atDestination = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,13 @@ public class PlayerMotor : MonoBehaviour
 
     void Update()
     {
-        if (target != null)
+        if (target != null && !atDestination) 
         {
             agent.SetDestination(target.position);
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                atDestination = true;
+            }
             FaceTarget();
         }
     }
@@ -30,6 +36,7 @@ public class PlayerMotor : MonoBehaviour
     //Moves to point
     public void MoveToPoint(Vector3 point)
     {
+        atDestination = false;
         agent.SetDestination(point);
     }
 
