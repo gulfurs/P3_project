@@ -154,6 +154,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 71c7a844d44b52e439a421c75b3184b6, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
+    randomizePitch: 0
+    source: {fileID: 0}
+  - name: Extinguish
+    clip: {fileID: 8300000, guid: 6225eff8845d57644b4de8a7866ceed1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
     randomizePitch: 1
     source: {fileID: 0}

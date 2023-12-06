@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c1ba94518f1a24086c3118457c5824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atDestination: 0
 --- !u!114 &929352597143619585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5761,3 +5762,5 @@ MonoBehaviour:
   animateTree: {fileID: 0}
   tutorialParticle: {fileID: 0}
   toggleObject: {fileID: 0}
+  agent: {fileID: 929352597143619597}
+  speedo: 0

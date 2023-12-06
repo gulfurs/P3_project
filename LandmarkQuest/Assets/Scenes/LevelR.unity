@@ -6389,42 +6389,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[15].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[16].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6225eff8845d57644b4de8a7866ceed1, type: 3}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[16].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[16].name
-      value: Extinguish
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[16].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[16].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[15].randomizePitch
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
-      propertyPath: sounds.Array.data[16].randomizePitch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4501757858233722589, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
       propertyPath: m_Name
       value: AudioManager

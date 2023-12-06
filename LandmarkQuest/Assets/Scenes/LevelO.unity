@@ -604,18 +604,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 381552018, guid: 61dd956ff770c5441b988d01c8e9403f, type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 1893756007}
-    - target: {fileID: 543450653625521983, guid: 61dd956ff770c5441b988d01c8e9403f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149104102789, guid: 61dd956ff770c5441b988d01c8e9403f, type: 3}
-      propertyPath: m_Name
-      value: PlayerGFX
-      objectReference: {fileID: 0}
     - target: {fileID: 929352597143619586, guid: 61dd956ff770c5441b988d01c8e9403f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -29612,11 +29600,6 @@ Transform:
 --- !u!1 &1893756001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 929352597143619598, guid: 61dd956ff770c5441b988d01c8e9403f, type: 3}
-  m_PrefabInstance: {fileID: 253578419}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &1893756007 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 929352597143619597, guid: 61dd956ff770c5441b988d01c8e9403f, type: 3}
   m_PrefabInstance: {fileID: 253578419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1911783545

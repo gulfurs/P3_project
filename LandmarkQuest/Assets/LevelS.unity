@@ -367,6 +367,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ce7c24fd7ccc43245aa9c178ab59ff8b, type: 3}
   m_PrefabInstance: {fileID: 444143886}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &54343899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54343891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdce21c964ac8c4a8bf2786055fe5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - Moth
+  shouldLoop: 0
 --- !u!1001 &95941221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -648,6 +663,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &135898805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135898798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdce21c964ac8c4a8bf2786055fe5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - Moth
+  shouldLoop: 0
 --- !u!1 &214861658 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ce7c24fd7ccc43245aa9c178ab59ff8b, type: 3}
@@ -742,6 +772,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ce7c24fd7ccc43245aa9c178ab59ff8b, type: 3}
   m_PrefabInstance: {fileID: 1904562438}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &214861666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214861658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdce21c964ac8c4a8bf2786055fe5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - Moth
+  shouldLoop: 0
 --- !u!1001 &247869017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1270,6 +1315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   interactionTransform: {fileID: 419398488}
+  interactSound: Interact1
   itemCheck: {fileID: 21300000, guid: e311e1ba064cbd3489b84149a060fa08, type: 3}
   disclaimerText: {fileID: 818044205}
   disclaimer: Looks like something fits in here
@@ -7236,6 +7282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   interactionTransform: {fileID: 836165908}
+  interactSound: Interact1
   itemCheck: {fileID: 21300000, guid: 24e97ff1a47cd4c4bbded8a0a82397c3, type: 3}
   disclaimerText: {fileID: 818044205}
   disclaimer: Looks like something fits in here
@@ -7308,6 +7355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   interactionTransform: {fileID: 543450652484490376}
+  interactSound: Interact1
   itemCheck: {fileID: 21300000, guid: e708157fe53f61342ac71cc2a25e2501, type: 3}
   disclaimerText: {fileID: 818044205}
   disclaimer: Looks like something fits in here
@@ -8946,7 +8994,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animateTree: {fileID: 0}
+  tutorialParticle: {fileID: 0}
   toggleObject: {fileID: 0}
+  agent: {fileID: 0}
+  speedo: 0
 --- !u!1 &1346001131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1733ccefae09d4b45a65f2311194e720, type: 3}
@@ -8971,6 +9022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 4.5
   interactionTransform: {fileID: 1346001132}
+  interactSound: Interact1
   goingUp: 0
   climbingAnim: {fileID: 1320269746}
 --- !u!65 &1346001136
@@ -10189,6 +10241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 4.5
   interactionTransform: {fileID: 1664793589}
+  interactSound: Interact1
   goingUp: 1
   climbingAnim: {fileID: 1320269746}
 --- !u!65 &1664793593
@@ -10288,6 +10341,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
+      propertyPath: sounds.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
+      propertyPath: sounds.Array.data[17].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 71c7a844d44b52e439a421c75b3184b6, type: 3}
+    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
+      propertyPath: sounds.Array.data[17].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
+      propertyPath: sounds.Array.data[17].name
+      value: Moth
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
+      propertyPath: sounds.Array.data[17].pitch
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
+      propertyPath: sounds.Array.data[17].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501757858233722588, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
+      propertyPath: sounds.Array.data[17].randomizePitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4501757858233722589, guid: 5709dee1ce60d204a9663db8dfebf338, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -10764,6 +10845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 4
   interactionTransform: {fileID: 1952264671}
+  interactSound: Interact1
   newItem: {fileID: 0}
   noDestroy: 1
   RandomItem: 1
