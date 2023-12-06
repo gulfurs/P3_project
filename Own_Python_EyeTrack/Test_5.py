@@ -92,6 +92,8 @@ with open(csv_file_path, 'w', newline='') as csvfile:
                 writer.writerow({"Timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "State": current_state})
 
             pre_state = current_state
+            current_time = datetime.now().strftime("%H:%M:%S")
+            cv2.putText(frame, current_time, (frame_w - 150, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
 
         cv2.imshow('Test4', frame)
 
