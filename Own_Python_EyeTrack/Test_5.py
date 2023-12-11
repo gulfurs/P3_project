@@ -10,7 +10,7 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = 'localhost'
 port = 12345
 server_socket.bind((host, port))
-server_socket.listen(5)
+server_socket.listen(1)
 
 print("Listening for Unity client on " + host + ":" + str(port))
 
@@ -77,13 +77,13 @@ with open(csv_file_path, 'w', newline='') as csvfile:
 
             if screen_x < screen_w / 3:
                 current_state = "Left"
-                client_socket.send(struct.pack("<I", 1)) 
+                client_socket.send(struct.pack("<B", 1)) 
             elif screen_x > 2 * screen_w / 3:
                 current_state = "Right"
-                client_socket.send(struct.pack("<I", 2)) 
+                client_socket.send(struct.pack("<B", 2)) 
             else:
                 current_state = "Center"
-                client_socket.send(struct.pack("<I", 0)) 
+                client_socket.send(struct.pack("<B", 0)) 
 
             if current_state != pre_state:
                 print(current_state)

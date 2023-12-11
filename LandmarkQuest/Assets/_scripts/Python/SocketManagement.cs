@@ -6,7 +6,7 @@ public class SocketManagement : MonoBehaviour
 {
     private TcpClient client;
     private NetworkStream stream;
-    private byte[] buffer = new byte[4];
+    private byte[] buffer = new byte[1];
 
     public int currentMessage = 0; // Default value for no message
 
@@ -20,8 +20,8 @@ public class SocketManagement : MonoBehaviour
     {
         if (IsStreamAvailable)
         {
-            stream.Read(buffer, 0, 4);
-            currentMessage = BitConverter.ToInt32(buffer, 0);
+            stream.Read(buffer, 0, 1);
+            currentMessage = buffer[0];
             //Debug.Log("Received message from Python: " + currentMessage);
         }
     }
