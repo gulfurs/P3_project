@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
 
 	public Interactable focus;
-	public LayerMask movementmask;
 
 	Camera cam;
 	PlayerMotor motor;
@@ -35,7 +34,7 @@ public class PlayerController : MonoBehaviour
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
-			if (Physics.Raycast(ray, out hit, 10000, movementmask))
+			if (Physics.Raycast(ray, out hit, 10000))
 			{
 				PlayParticles(hit.point, null);
 				//Debug.Log("We hit " + hit.collider.name + " " + hit.point);
@@ -61,8 +60,6 @@ public class PlayerController : MonoBehaviour
 				//Checks if it's interactable
 				if (interactable != null)
 				{
-					Debug.Log("<color=lime>" + "Interacting with " + interactable.name + "</color>");
-
 					// Check if the interactable has the ObjectiveInteraction component
 					if (interactable.GetComponent<ObjectiveInteraction>() != null)
 					{

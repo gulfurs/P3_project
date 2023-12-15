@@ -6,6 +6,7 @@ from datetime import datetime
 import socket
 import struct
 
+# Creation of socket server
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = 'localhost'
 port = 12345
