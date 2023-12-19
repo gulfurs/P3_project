@@ -9,7 +9,7 @@ public class ObjectMovementCircular : MonoBehaviour
     public bool clockwise = true; // Direction of rotation (clockwise or counterclockwise)
     public bool verticalPattern = false; // Move vertically or horizontally
     public bool loopPattern = true;
-    public Transform rotationCenter; // Assign a public transform to set the center of rotation
+    public Transform rotationCenter; 
     public bool pickInitialPosition = false;
     public float angle = 0.0f;
     public bool faceAngle = true;

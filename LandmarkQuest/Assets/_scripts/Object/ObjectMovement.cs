@@ -48,7 +48,7 @@ public class ObjectMovement : MonoBehaviour
                     if (currentWaypointIndex >= waypoints.Count)
                     {
                         if (loopPattern)
-                        {
+                        {   
                             currentWaypointIndex = 0; // Reset to the first waypoint
                         }
                         else
@@ -71,13 +71,12 @@ public class ObjectMovement : MonoBehaviour
             }
             else
             {
-                // Implement waiting logic at waypoints
+                // And now we wait
                 waitTime -= Time.deltaTime;
             }
         }
     }
 
-    // Method to make the object face the next waypoint
     void FaceWaypoint()
     {
         // Find direction towards the next waypoint

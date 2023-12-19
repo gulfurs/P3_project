@@ -13,13 +13,6 @@ public class ExtinguisherParticles : MonoBehaviour
     //Check for collision
     void OnParticleCollision(GameObject other)
     {
-       
-        FireHealth fire = other.GetComponent<FireHealth>();
-        if (fire != null)
-        {
-            fire.TakeDamage(extinguisherDamage);
-        }
-
             Vulnerable obj = other.GetComponent<Vulnerable>();
         if (obj != null)
         {
